@@ -287,8 +287,8 @@ export default function InStockPage() {
                 {/* Expandable Content */}
                 {isExpanded && (
                   <div className="p-6 border-t border-white/5 bg-[#09090B]/50 animate-in slide-in-from-top-2 duration-300">
-                    <div className="overflow-hidden rounded-xl border border-white/5 bg-[#09090B]">
-                      <table className="w-full text-sm text-left">
+                    <div className="overflow-x-auto rounded-xl border border-white/5 bg-[#09090B]">
+                      <table className="w-full text-sm text-left min-w-[700px]">
                         <thead className="text-[10px] text-muted-foreground uppercase bg-white/[0.02] border-b border-white/5">
                           <tr>
                             <th className="px-6 py-4 font-bold tracking-wider">Type</th>

@@ -173,7 +173,7 @@ export default function PartyDetailPage() {
         ) : (
           <Card className="overflow-hidden bg-[#18181B] border-white/5 rounded-2xl">
             <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left">
+              <table className="w-full text-sm text-left min-w-[700px]">
                 <thead className="text-[11px] text-muted-foreground uppercase bg-[#09090B] border-b border-white/5">
                   <tr>
                     <th className="px-6 py-4 font-bold tracking-wider">Batch</th>
@@ -253,7 +253,7 @@ export default function PartyDetailPage() {
           ) : (
             <Card className="overflow-hidden bg-[#18181B] border-rose-500/10 rounded-2xl">
               <div className="overflow-x-auto">
-                <table className="w-full text-sm text-left">
+                <table className="w-full text-sm text-left min-w-[700px]">
                   <thead className="text-[11px] text-muted-foreground uppercase bg-rose-500/5 border-b border-white/5">
                     <tr>
                       <th className="px-6 py-4 font-bold tracking-wider">Date Used</th>

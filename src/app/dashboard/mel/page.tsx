@@ -471,10 +471,10 @@ export default function MelEnginePage() {
         </Card>
       </div>
 
-      <div className="grid grid-cols-12 gap-6 flex-1 min-h-0">
+      <div className="flex flex-col xl:grid xl:grid-cols-12 gap-6 flex-1 xl:min-h-0 overflow-y-auto xl:overflow-hidden pb-10 xl:pb-0 pr-2 xl:pr-0">
         
         {/* LEFT PANEL: Inputs & Settings */}
-        <div className="col-span-3 space-y-4 flex flex-col h-full overflow-y-auto pr-2 scrollbar-hide pb-10">
+        <div className="xl:col-span-3 space-y-4 flex flex-col xl:h-full xl:overflow-y-auto xl:pr-2 scrollbar-hide pb-6 xl:pb-10">
           <Card className="bg-[#111827] border-white/5 shrink-0">
             <CardHeader className="pb-3 border-b border-white/5">
               <CardTitle className="text-sm font-bold flex items-center text-white">
@@ -582,7 +582,7 @@ export default function MelEnginePage() {
         </div>
 
         {/* CENTER: Selected Metals */}
-        <div className="col-span-4 flex flex-col h-[calc(100vh-250px)]">
+        <div className="xl:col-span-4 flex flex-col h-[500px] xl:h-[calc(100vh-250px)]">
           <Card className="bg-[#111827] border-white/5 flex-1 flex flex-col overflow-hidden">
             <CardHeader className="pb-4 border-b border-white/5 bg-[#111827] z-10 shrink-0 flex flex-col space-y-3">
               <div className="flex flex-row items-center justify-between">
@@ -659,7 +659,7 @@ export default function MelEnginePage() {
         </div>
 
         {/* RIGHT PANEL: Available Metals */}
-        <div className="col-span-5 flex flex-col h-[calc(100vh-250px)]">
+        <div className="xl:col-span-5 flex flex-col h-[500px] xl:h-[calc(100vh-250px)] mt-4 xl:mt-0">
           <Card className="bg-[#111827] border-white/5 flex-1 flex flex-col overflow-hidden">
             <CardHeader className="pb-4 border-b border-white/5 bg-[#111827] z-10 shrink-0">
               <CardTitle className="text-sm font-bold text-white flex items-center justify-between">

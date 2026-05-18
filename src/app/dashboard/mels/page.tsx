@@ -75,55 +75,57 @@ export default function MelsHistoryPage() {
               <p>No MEL records found.</p>
             </div>
           ) : (
-            <table className="w-full text-sm text-left">
-              <thead className="text-xs text-muted-foreground uppercase bg-[#09090B] sticky top-0 z-10 border-b border-white/5">
-                <tr>
-                  <th className="px-6 py-4 font-bold tracking-wider">Date</th>
-                  <th className="px-6 py-4 font-bold tracking-wider">MEL Name / ID</th>
-                  <th className="px-6 py-4 font-bold tracking-wider">Party</th>
-                  <th className="px-6 py-4 font-bold tracking-wider text-right">Target Range</th>
-                  <th className="px-6 py-4 font-bold tracking-wider text-right">Achieved Purity</th>
-                  <th className="px-6 py-4 font-bold tracking-wider text-right">Total Weight</th>
-                  <th className="px-6 py-4 font-bold tracking-wider text-center">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/5">
-                {filteredMels.map((mel) => (
-                  <tr key={mel.mel_id} className="hover:bg-white/[0.02] transition-colors group">
-                    <td className="px-6 py-4 font-mono text-xs text-white/70 whitespace-nowrap">
-                      {new Date(mel.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="font-bold text-white mb-0.5">{mel.mel_name || "Unnamed MEL"}</div>
-                      <div className="font-mono text-[10px] text-muted-foreground">{mel.mel_id}</div>
-                    </td>
-                    <td className="px-6 py-4 text-white/90">
-                      {mel.party_name}
-                    </td>
-                    <td className="px-6 py-4 text-right font-mono text-muted-foreground text-xs">
-                      {formatDecimal(mel.target_purity_min)}% - {formatDecimal(mel.target_purity_max)}%
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <span className="font-bold font-mono text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded">
-                        {formatDecimal(mel.achieved_purity)}%
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 text-right font-mono text-white/90">
-                      {formatDecimal(mel.total_weight)} g
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      <Button 
-                        variant="ghost" size="sm"
-                        onClick={() => router.push(`/dashboard/mels/${mel.mel_id}/receipt`)}
-                        className="h-8 text-primary hover:text-primary hover:bg-primary/10"
-                      >
-                        <Printer className="h-4 w-4 mr-2" /> Receipt
-                      </Button>
-                    </td>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm text-left min-w-[800px]">
+                <thead className="text-xs text-muted-foreground uppercase bg-[#09090B] sticky top-0 z-10 border-b border-white/5">
+                  <tr>
+                    <th className="px-6 py-4 font-bold tracking-wider">Date</th>
+                    <th className="px-6 py-4 font-bold tracking-wider">MEL Name / ID</th>
+                    <th className="px-6 py-4 font-bold tracking-wider">Party</th>
+                    <th className="px-6 py-4 font-bold tracking-wider text-right">Target Range</th>
+                    <th className="px-6 py-4 font-bold tracking-wider text-right">Achieved Purity</th>
+                    <th className="px-6 py-4 font-bold tracking-wider text-right">Total Weight</th>
+                    <th className="px-6 py-4 font-bold tracking-wider text-center">Actions</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  {filteredMels.map((mel) => (
+                    <tr key={mel.mel_id} className="hover:bg-white/[0.02] transition-colors group">
+                      <td className="px-6 py-4 font-mono text-xs text-white/70 whitespace-nowrap">
+                        {new Date(mel.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="font-bold text-white mb-0.5">{mel.mel_name || "Unnamed MEL"}</div>
+                        <div className="font-mono text-[10px] text-muted-foreground">{mel.mel_id}</div>
+                      </td>
+                      <td className="px-6 py-4 text-white/90">
+                        {mel.party_name}
+                      </td>
+                      <td className="px-6 py-4 text-right font-mono text-muted-foreground text-xs whitespace-nowrap">
+                        {formatDecimal(mel.target_purity_min)}% - {formatDecimal(mel.target_purity_max)}%
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <span className="font-bold font-mono text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded">
+                          {formatDecimal(mel.achieved_purity)}%
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-right font-mono text-white/90 whitespace-nowrap">
+                        {formatDecimal(mel.total_weight)} g
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        <Button 
+                          variant="ghost" size="sm"
+                          onClick={() => router.push(`/dashboard/mels/${mel.mel_id}/receipt`)}
+                          className="h-8 text-primary hover:text-primary hover:bg-primary/10 whitespace-nowrap"
+                        >
+                          <Printer className="h-4 w-4 mr-2" /> Receipt
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </CardContent>
       </Card>
