@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-background: #09090B;
+  --color-foreground: #FAFAFA;
+  --color-card: #18181B;
+  --color-card-foreground: #FAFAFA;
+  --color-primary: #FF6B00;
+  --color-primary-foreground: #09090B;
+  --color-secondary: #27272A;
+  --color-secondary-foreground: #FAFAFA;
+  --color-muted: #27272A;
+  --color-muted-foreground: #A1A1AA;
+  --color-accent: #FF6B00;
+  --color-accent-foreground: #09090B;
+  --color-destructive: #7F1D1D;
+  --color-destructive-foreground: #FEF2F2;
+  --color-border: rgba(255, 255, 255, 0.05);
+  --color-input: rgba(255, 255, 255, 0.05);
+  --color-ring: rgba(255, 107, 0, 0.5);
+  
+  --radius-lg: 1.25rem;
+  --radius-md: 0.75rem;
+  --radius-sm: 0.5rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Base layer overrides */
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Modern UI Utilities */
+@utility glass {
+  background: rgba(24, 24, 27, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
 }
+
+@utility glass-card {
+  background: #18181B;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.5);
+}
+
+@utility text-glow {
+  text-shadow: 0 0 10px rgba(255, 107, 0, 0.3);
+}
+
+@utility orange-gradient {
+  background: linear-gradient(135deg, #FF6B00 0%, #FF8A00 100%);
+}
+
+@utility sidebar-active {
+  background: rgba(255, 107, 0, 0.1);
+  color: #FF6B00;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+}
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
+
+@layer base {
+  /* Thin, subtle scrollbar for the rest of the app */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 107, 0, 0.3);
+  }
+}
+
+
