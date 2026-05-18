@@ -112,7 +112,7 @@ export default function PartyDetailPage() {
     <div className="space-y-8 animate-in fade-in duration-700">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <Button variant="secondary" size="icon" onClick={() => router.push("/dashboard/parties")} className="rounded-full bg-[#18181B] border-white/5 text-muted-foreground hover:text-white">
+          <Button variant="outline" size="icon" onClick={() => router.push("/dashboard/parties")} className="rounded-full bg-[#18181B] border-white/5 text-muted-foreground hover:text-white">
             <ArrowLeft className="h-5 w-5" />
           </Button>
           <div>
@@ -224,7 +224,7 @@ export default function PartyDetailPage() {
 
       <div className="flex justify-center pt-4">
         <Button
-          variant="secondary"
+          variant="outline"
           onClick={() => setShowOutStock(!showOutStock)}
           className="rounded-full bg-[#18181B] border-white/5 text-muted-foreground hover:text-white px-8"
         >

@@ -105,8 +105,10 @@ export default function DashboardPage() {
           }
 
           // Date mapping for IN (uses actual inserted time for accurate graphing)
-          if (item.batches && item.batches.date_time) {
-            const dateStr = new Date(item.batches.date_time).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+          const batchInfo: any = item.batches;
+          const dateTime = Array.isArray(batchInfo) ? batchInfo[0]?.date_time : batchInfo?.date_time;
+          if (dateTime) {
+            const dateStr = new Date(dateTime).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
             if (dateMap[dateStr]) {
               dateMap[dateStr].in += f
             }

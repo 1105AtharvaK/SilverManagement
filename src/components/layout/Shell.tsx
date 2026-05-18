@@ -100,14 +100,24 @@ export function Shell({ children }: { children: React.ReactNode }) {
           .select("metal_id, metal_type, custom_type, parties(id, name)")
           .or(`custom_type.ilike.%${query}%,metal_type.ilike.%${query}%`)
           .limit(3)
-        inStockResults = (inData || []).map(m => ({ id: m.metal_id, name: `${m.custom_type || m.metal_type} (${m.parties?.name || 'In-Stock'})`, href: m.parties ? `/dashboard/parties/${m.parties.id}` : `/dashboard/in-stock`, type: 'in-stock' }))
+        inStockResults = (inData || []).map((m: any) => {
+          const partyInfo: any = m.parties;
+          const partyName = Array.isArray(partyInfo) ? partyInfo[0]?.name : partyInfo?.name;
+          const partyId = Array.isArray(partyInfo) ? partyInfo[0]?.id : partyInfo?.id;
+          return { id: m.metal_id, name: `${m.custom_type || m.metal_type} (${partyName || 'In-Stock'})`, href: partyId ? `/dashboard/parties/${partyId}` : `/dashboard/in-stock`, type: 'in-stock' }
+        })
 
         const { data: outData } = await supabase
           .from("out_stock")
           .select("out_id, metal_type, parties(id, name)")
           .ilike("metal_type", `%${query}%`)
           .limit(3)
-        outStockResults = (outData || []).map(m => ({ id: m.out_id, name: `${m.metal_type} (${m.parties?.name || 'Out-Stock'})`, href: m.parties ? `/dashboard/parties/${m.parties.id}` : `/dashboard/out-stock`, type: 'out-stock' }))
+        outStockResults = (outData || []).map((m: any) => {
+          const partyInfo: any = m.parties;
+          const partyName = Array.isArray(partyInfo) ? partyInfo[0]?.name : partyInfo?.name;
+          const partyId = Array.isArray(partyInfo) ? partyInfo[0]?.id : partyInfo?.id;
+          return { id: m.out_id, name: `${m.metal_type} (${partyName || 'Out-Stock'})`, href: partyId ? `/dashboard/parties/${partyId}` : `/dashboard/out-stock`, type: 'out-stock' }
+        })
       }
 
       setSearchResults([...pageResults, ...partyResults, ...melResults, ...inStockResults, ...outStockResults])
