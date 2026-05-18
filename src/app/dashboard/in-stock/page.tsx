@@ -416,7 +416,7 @@ export default function InStockPage() {
               
               <div className="flex justify-end space-x-3 pt-2">
                 <Button variant="ghost" onClick={() => setDeleteModalOpen(false)} disabled={isDeleting} className="text-muted-foreground hover:text-white rounded-xl">Cancel</Button>
-                <Button variant="destructive" onClick={confirmDeleteBatch} disabled={isDeleting} className="bg-rose-600 hover:bg-rose-700 text-white font-bold px-8 rounded-xl shadow-lg shadow-rose-500/20 border-0">
+                <Button variant="danger" onClick={confirmDeleteBatch} disabled={isDeleting} className="bg-rose-600 hover:bg-rose-700 text-white font-bold px-8 rounded-xl shadow-lg shadow-rose-500/20 border-0">
                   {isDeleting ? "Deleting..." : "Confirm Delete"}
                 </Button>
               </div>
