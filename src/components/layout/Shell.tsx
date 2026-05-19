@@ -275,11 +275,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
           onClick={() => setMobileMenuOpen(false)}
         >
           <div 
-            className="w-72 h-full bg-[#09090B] p-6 shadow-2xl animate-in slide-in-from-left duration-300"
+            className="w-72 h-full bg-[#09090B] p-6 shadow-2xl animate-in slide-in-from-left duration-300 flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Same sidebar content for mobile */}
-            <div className="flex items-center justify-between mb-10 px-2">
+            <div className="flex items-center justify-between mb-10 px-2 shrink-0">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 rounded-xl orange-gradient flex items-center justify-center">
                   <Sparkles className="h-6 w-6 text-white" />
@@ -288,7 +288,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
               </div>
             </div>
             
-            <div className="space-y-8">
+            <div className="flex-1 overflow-y-auto space-y-8 scrollbar-hide">
               {sidebarGroups.map((group) => (
                 <div key={group.title} className="space-y-3">
                   <h3 className="px-4 text-[11px] font-bold tracking-[0.1em] text-muted-foreground/60">
@@ -302,6 +302,16 @@ export function Shell({ children }: { children: React.ReactNode }) {
                   </nav>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-auto pt-6 shrink-0">
+              <button
+                onClick={handleLogout}
+                className="flex items-center space-x-3 px-4 py-2.5 w-full text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-xl transition-all group"
+              >
+                <LogOut className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                <span className="font-medium text-sm">Logout Session</span>
+              </button>
             </div>
           </div>
         </div>
